@@ -32,7 +32,7 @@ def test_add_to_cart(driver,url):
 def test_check_number_of_output_elements(driver,url):
     driver.get(url + 'desktops')
     sort_filter = driver.find_element(By.CSS_SELECTOR, "#input-limit > option[selected]")
-    assert "20" == sort_filter.text
+    assert "15" == sort_filter.text
 
 def test_check_sort_elements(driver,url):
     driver.get(url + 'desktops')
