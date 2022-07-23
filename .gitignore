@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# dmitry.u otus
+.idea
+.DS_Store
+bin/
+pyvenv.cfg
+tests/.pytest_cache
