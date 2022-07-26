@@ -13,16 +13,10 @@ def pytest_addoption(parser):
     parser.addoption("--url", default="http://192.168.1.41:8081/")
 
 @pytest.fixture
-def url(request):
-    url_option = request.config.getoption("--url")
-    yield url_option
-
-@pytest.fixture
 def driver(request):
     browser_name = request.config.getoption("--browser")
     drivers = request.config.getoption("--drivers")
     headless = request.config.getoption("--headless")
-
     if browser_name == "chrome":
         options = ChromeOptions()
         if headless:
@@ -45,5 +39,5 @@ def driver(request):
 
     browser.maximize_window()
     request.addfinalizer(browser.close)
-
+    browser.url = request.config.getoption("--url")
     return browser
