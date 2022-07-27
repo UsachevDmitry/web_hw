@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from .BasePage import BasePage
@@ -12,8 +13,10 @@ class CatalogPage(BasePage):
     SPAN = "span"
     OPTION = "#input-limit > option[selected]"
     OPTION2 ="#input-sort > option[selected]"
+
     def open_page(self, cat2):
-        return self.driver.get(self.driver.url + cat2)
+        with allure.step(f"page opens {self.driver.url}"):
+            self.driver.get(self.driver.url + cat2)
 
     def check_category_name(self):
         category_name = self._verify_element_visibility(self.DEVICES,5)
