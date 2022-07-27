@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
-
 from .BasePage import BasePage
-
 
 class MainPage(BasePage):
     LOGO = (By.CSS_SELECTOR, "div#logo > a > img")

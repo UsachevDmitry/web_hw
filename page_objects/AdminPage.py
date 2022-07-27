@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from .BasePage import BasePage
 
@@ -20,7 +21,9 @@ class AdminPage(BasePage):
     FORGOTTEN_PASSWORD = (By.LINK_TEXT, "Forgotten Password")
 
     def open_page(self):
-        self.driver.get(self.driver.url + "/admin")
+        url = self.driver.url + "/admin"
+        with allure.step(f"page opens {url}"):
+            self.driver.get(self.driver.url + "/admin")
 
     def login(self):
         self._fill_input_field(self.USERNAME_INPUT, "user")

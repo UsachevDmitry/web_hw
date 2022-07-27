@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from .BasePage import BasePage
 
@@ -9,7 +10,8 @@ class ProductPage(BasePage):
     PRODUCT = (By.ID, "product")
 
     def open_page(self):
-        return self.driver.get(self.driver.url + 'component/monitor/test')
+        with allure.step(f"page opens {self.driver.url}"):
+            return self.driver.get(self.driver.url + 'component/monitor/test')
 
     def check_product_card_apple(self):
         return self._verify_element_visibility(self.CONTENT).text
