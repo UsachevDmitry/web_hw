@@ -1,0 +1,13 @@
+.venv/
+venv/
+
+.idea/
+
+.pytest_cache/
+
+.git
+.cache
+.DS_Store
+bin/
+pyvenv.cfg
+tests/.pytest_cache

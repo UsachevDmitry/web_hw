@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from .BasePage import BasePage
 
@@ -13,14 +14,15 @@ class RegisterPage(BasePage):
     TEST_USER = {
         "firstname": "Dmitry",
         "lastname": "Usachev",
-        "email": "usachev.dmitry@gmail.com",
+        "email": "usachev.dmitry2@gmail.com",
         "telephone": "12345678901",
         "password": "123456",
         "confirm": "123456",
     }
 
     def open_page(self):
-        return self.driver.get(self.driver.url + 'index.php?route=account/register')
+        with allure.step(f"page opens {self.driver.url}"):
+            return self.driver.get(self.driver.url + 'index.php?route=account/register')
 
     def check_register_acc(self):
         return self._verify_element_visibility(self.SUCCESS_MESSAGE).text
@@ -36,7 +38,8 @@ class RegisterPage(BasePage):
         return self._verify_element_visibility(self.CONTINUE_BTN)
 
     def open_registr_page(self):
-        self.driver.get(self.driver.url)
+        with allure.step(f"page opens {self.driver.url}"):
+            self.driver.get(self.driver.url)
         self._find_element_and_click(self.MY_ACCOUNT_BTN)
         self._find_element_and_click(self.REGISTER_BTN)
 
